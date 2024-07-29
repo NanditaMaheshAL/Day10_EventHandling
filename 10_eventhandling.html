@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <style>
+        #message {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        #dynamic-text {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Handling</h1>
+
+    <button id="clickButton">Click Me</button>
+    <br><br>
+
+    <input type="text" id="textInput" placeholder="Type something...">
+    <br><br>
+
+    <form id="sampleForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit Form</button>
+    </form>
+    <br>
+
+    <div id="message"></div>
+    <div id="dynamic-text"></div>
+
+    <script>
+        // Click Event Handler
+        document.getElementById('clickButton').addEventListener('click', function() {
+            document.getElementById('message').textContent = 'Button clicked!';
+        });
+
+        // Mouse Over Event Handler
+        document.getElementById('clickButton').addEventListener('mouseover', function() {
+            document.getElementById('message').textContent = 'Mouse is over the button!';
+        });
+
+        // Keyboard Event Handler
+        document.getElementById('textInput').addEventListener('keydown', function(event) {
+            document.getElementById('message').textContent = `Key pressed: ${event.key}`;
+        });
+
+        // Form Submission Event Handler
+        document.getElementById('sampleForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            document.getElementById('message').textContent = 'Form submitted!';
+        });
+
+        // Mouse Move Event Handler
+        document.addEventListener('mousemove', function(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            document.getElementById('dynamic-text').textContent = `Mouse position: X=${x}, Y=${y}`;
+        });
+    </script>
+</body>
+</html>
